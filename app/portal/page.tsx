@@ -7,6 +7,7 @@ import { InfoCards } from "@/components/attendance/InfoCards";
 import { WeeklyTimeline } from "@/components/attendance/WeeklyTimeline";
 import { StatusRing } from "@/components/attendance/StatusRing";
 import { ActionButtons } from "@/components/attendance/ActionButtons";
+import { RequestActions } from "@/components/attendance/RequestActions";
 import { useTodayAttendance } from "@/components/attendance/useTodayAttendance";
 import { Card } from "@/components/ui/Card";
 
@@ -42,18 +43,22 @@ function PortalContent() {
         </Card>
       </div>
 
-      <Card className="flex flex-col items-center gap-6 rounded-l-none rounded-br-none rounded-tr-[11%] bg-sidebar-tint! p-6 pr-10 -mr-4 sm:pr-14 sm:-mr-8">
-        <p className="self-start text-sm font-semibold text-foreground">Morning [ 09:00am - 08:00pm]</p>
-        <StatusRing attendance={data} />
-        <ActionButtons
-          attendance={data}
-          actionLoading={actionLoading}
-          onClockIn={clockIn}
-          onStartBreak={startBreak}
-          onEndBreak={endBreak}
-          onClockOut={clockOut}
-        />
-      </Card>
+      <div className="flex flex-col gap-4">
+        <Card className="flex flex-col items-center gap-6 rounded-l-none rounded-br-none rounded-tr-[11%] bg-sidebar-tint! p-6 pr-10 -mr-4 sm:pr-14 sm:-mr-8">
+          <p className="self-start text-sm font-semibold text-foreground">Morning [ 09:00am - 08:00pm]</p>
+          <StatusRing attendance={data} />
+          <ActionButtons
+            attendance={data}
+            actionLoading={actionLoading}
+            onClockIn={clockIn}
+            onStartBreak={startBreak}
+            onEndBreak={endBreak}
+            onClockOut={clockOut}
+          />
+        </Card>
+
+        <RequestActions />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,5 @@
 "use client";
 
-import { CalendarCheck2, UserCog } from "lucide-react";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/Button";
 import type { TodayAttendance } from "@/lib/types";
 
@@ -30,8 +28,6 @@ export function ActionButtons({
   const canEndBreak = status === "ON_BREAK";
   const canClockOut = status === "CLOCKED_IN";
   const isOnBreak = status === "ON_BREAK";
-
-  const notify = (label: string) => toast.info(`${label} isn't available in this demo.`);
 
   return (
     <div className="flex w-full flex-col gap-4">
@@ -71,17 +67,6 @@ export function ActionButtons({
       {status === "CLOCKED_OUT" && (
         <p className="text-center text-sm font-medium text-success-dark">Attendance completed for today</p>
       )}
-
-      <div className="flex w-full gap-3 border-t border-border pt-4">
-        <Button variant="outline" size="md" className="flex-1" onClick={() => notify("Request Attendance")}>
-          <CalendarCheck2 className="h-4 w-4" />
-          Request Attendance
-        </Button>
-        <Button variant="outline" size="md" className="flex-1" onClick={() => notify("Request Overtime")}>
-          <UserCog className="h-4 w-4" />
-          Request Overtime
-        </Button>
-      </div>
     </div>
   );
 }
