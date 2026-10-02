@@ -42,7 +42,7 @@ function PortalContent() {
         </Card>
       </div>
 
-      <Card className="flex flex-col items-center gap-6 rounded-4xl bg-primary-light/40 p-6">
+      <Card className="flex flex-col items-center gap-6 rounded-l-none rounded-br-none rounded-tr-[11%] bg-sidebar-tint! p-6 pr-10 -mr-4 sm:pr-14 sm:-mr-8">
         <p className="self-start text-sm font-semibold text-foreground">Morning [ 09:00am - 08:00pm]</p>
         <StatusRing attendance={data} />
         <ActionButtons

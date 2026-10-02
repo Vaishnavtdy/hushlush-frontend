@@ -38,8 +38,8 @@ export function ActionButtons({
       <div className="flex w-full gap-3">
         <Button
           variant="warning"
-          size="lg"
-          className="flex-1 whitespace-nowrap px-2 text-sm"
+          size="md"
+          className="min-w-0 flex-1 whitespace-nowrap"
           loading={actionLoading === "clock-out"}
           disabled={busy || !canClockOut}
           onClick={onClockOut}
@@ -48,8 +48,8 @@ export function ActionButtons({
         </Button>
         <Button
           variant="success"
-          size="lg"
-          className="flex-1 whitespace-nowrap px-2 text-sm"
+          size="md"
+          className="min-w-0 flex-1 whitespace-nowrap"
           loading={actionLoading === "break-start" || actionLoading === "break-end"}
           disabled={busy || (!canStartBreak && !canEndBreak)}
           onClick={isOnBreak ? onEndBreak : onStartBreak}
@@ -58,8 +58,8 @@ export function ActionButtons({
         </Button>
         <Button
           variant="primary"
-          size="lg"
-          className="flex-1 whitespace-nowrap px-2 text-sm"
+          size="md"
+          className="min-w-0 flex-1 whitespace-nowrap"
           loading={actionLoading === "clock-in"}
           disabled={busy || !canClockIn}
           onClick={onClockIn}
