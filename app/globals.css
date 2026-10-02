@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #2f2222;
+
+  --color-primary: #f43f46;
+  --color-primary-dark: #cd1e24;
+  --color-primary-light: #fee7e8;
+
+  --color-success: #34c759;
+  --color-success-light: #eef9e8;
+  --color-success-dark: #1f9254;
+
+  --color-warning: #ff9f45;
+  --color-warning-light: #fff3e7;
+  --color-warning-dark: #c96a1f;
+
+  --color-info: #1687d8;
+
+  --color-card-blue: #deefff;
+  --color-card-blue-icon: #bfe0ff;
+  --color-card-purple: #e0deff;
+  --color-card-purple-icon: #cac5ff;
+  --color-card-peach: #ffebde;
+  --color-card-peach-icon: #ffd2b3;
+  --color-card-lime: #f9ffde;
+  --color-card-lime-icon: #e4f0a8;
+
+  --color-muted: #8a8585;
+  --color-border: #ececec;
+  --color-sidebar-bg: #ffffff;
+  --color-sidebar-tint: #fdf6f4;
+  --color-chip-border: #ffd9da;
+  --color-gold: #ffcd02;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-success: var(--color-success);
+  --color-success-light: var(--color-success-light);
+  --color-success-dark: var(--color-success-dark);
+  --color-warning: var(--color-warning);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-info: var(--color-info);
+  --color-card-blue: var(--color-card-blue);
+  --color-card-blue-icon: var(--color-card-blue-icon);
+  --color-card-purple: var(--color-card-purple);
+  --color-card-purple-icon: var(--color-card-purple-icon);
+  --color-card-peach: var(--color-card-peach);
+  --color-card-peach-icon: var(--color-card-peach-icon);
+  --color-card-lime: var(--color-card-lime);
+  --color-card-lime-icon: var(--color-card-lime-icon);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-sidebar-bg: var(--color-sidebar-bg);
+  --color-sidebar-tint: var(--color-sidebar-tint);
+  --color-chip-border: var(--color-chip-border);
+  --color-gold: var(--color-gold);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
