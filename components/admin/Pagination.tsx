@@ -3,20 +3,43 @@
 import { cn } from "@/lib/utils";
 import type { Pagination as PaginationType } from "@/lib/types";
 
-export function Pagination({ pagination, onPageChange }: { pagination: PaginationType; onPageChange: (page: number) => void }) {
+const PAGE_SIZE_OPTIONS = [10, 25, 50];
+
+export function Pagination({
+  pagination,
+  onPageChange,
+  onLimitChange,
+}: {
+  pagination: PaginationType;
+  onPageChange: (page: number) => void;
+  onLimitChange?: (limit: number) => void;
+}) {
   const { page, totalPages, total, limit } = pagination;
-  const rangeStart = total === 0 ? 0 : (page - 1) * limit + 1;
-  const rangeEnd = Math.min(total, page * limit);
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1).filter(
     (p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1,
   );
 
   return (
-    <div className="flex flex-col items-center justify-between gap-3 border-t border-border pt-4 sm:flex-row">
-      <p className="text-sm text-muted">
-        Showing {rangeStart}–{rangeEnd} of {total}
-      </p>
+    <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+      {onLimitChange ? (
+        <select
+          value={limit}
+          onChange={(e) => onLimitChange(Number(e.target.value))}
+          aria-label="Rows per page"
+          className="rounded-lg border border-border bg-white px-3 py-1.5 text-sm font-medium text-foreground outline-none focus:border-primary"
+        >
+          {PAGE_SIZE_OPTIONS.map((size) => (
+            <option key={size} value={size}>
+              {size} of {total}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <p className="text-sm text-muted">
+          {limit} of {total}
+        </p>
+      )}
       <div className="flex items-center gap-1">
         <PageButton disabled={page === 1} onClick={() => onPageChange(1)} label="First" />
         <PageButton disabled={page === 1} onClick={() => onPageChange(page - 1)} label="Previous" />

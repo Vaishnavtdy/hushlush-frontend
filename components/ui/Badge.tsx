@@ -8,17 +8,17 @@ const STATUS_CONFIG: Record<AttendanceStatus, { label: string; dot: string; clas
     classes: "bg-gray-100 text-gray-600",
   },
   CLOCKED_IN: {
-    label: "Clocked In",
+    label: "Clock In",
     dot: "bg-primary",
     classes: "bg-primary-light text-primary-dark",
   },
   ON_BREAK: {
-    label: "On Break",
+    label: "Break",
     dot: "bg-success",
     classes: "bg-success-light text-success-dark",
   },
   CLOCKED_OUT: {
-    label: "Clocked Out",
+    label: "Clock Out",
     dot: "bg-warning",
     classes: "bg-warning-light text-warning-dark",
   },

@@ -10,9 +10,10 @@ export interface AdminAttendanceFilters {
   date: string;
   status: AttendanceStatus | "";
   page: number;
+  limit: number;
 }
 
-const LIMIT = 10;
+const DEFAULT_LIMIT = 10;
 
 export function useAdminAttendance() {
   const [filters, setFilters] = useState<AdminAttendanceFilters>({
@@ -20,6 +21,7 @@ export function useAdminAttendance() {
     date: "",
     status: "",
     page: 1,
+    limit: DEFAULT_LIMIT,
   });
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [response, setResponse] = useState<AdminAttendanceResponse | null>(null);
@@ -37,7 +39,7 @@ export function useAdminAttendance() {
 
     const params = new URLSearchParams();
     params.set("page", String(filters.page));
-    params.set("limit", String(LIMIT));
+    params.set("limit", String(filters.limit));
     if (debouncedSearch) params.set("search", debouncedSearch);
     if (filters.date) params.set("date", filters.date);
     if (filters.status) params.set("status", filters.status);
@@ -60,13 +62,22 @@ export function useAdminAttendance() {
     return () => {
       cancelled = true;
     };
-  }, [debouncedSearch, filters.date, filters.status, filters.page]);
+  }, [debouncedSearch, filters.date, filters.status, filters.page, filters.limit]);
 
   const updateFilters = (partial: Partial<Omit<AdminAttendanceFilters, "page">>) => {
     setFilters((prev) => ({ ...prev, ...partial, page: 1 }));
   };
 
   const setPage = (page: number) => setFilters((prev) => ({ ...prev, page }));
+  const setLimit = (limit: number) => setFilters((prev) => ({ ...prev, limit, page: 1 }));
 
-  return { filters, updateFilters, setPage, records: response?.records ?? [], pagination: response?.pagination, loading };
+  return {
+    filters,
+    updateFilters,
+    setPage,
+    setLimit,
+    records: response?.records ?? [],
+    pagination: response?.pagination,
+    loading,
+  };
 }
